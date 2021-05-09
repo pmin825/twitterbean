@@ -8,12 +8,14 @@ const requireAll = require("require-all");
 const cors = require("cors");
 const session = require("express-session");
 const { mongoConnectionString } = require("./constants");
+require("dotenv").config();
+
 
 const app = express();
 app.use(express.static("public"));
 
 // connect to the DB
-mongoose.connect(mongoConnectionString, {
+mongoose.connect(process.env.MONGO_URI || mongoConnectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
