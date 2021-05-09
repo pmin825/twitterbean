@@ -24,12 +24,12 @@ export default function App() {
       </AppBar>
       <Router>
         <Switch>
-          <Route path="/auth">
+          <Route path="/auth/">
             <LoginPage />
           </Route>
-          {/* <Route path="/auth/register">
+          <Route path="/auth/register">
             <LoginPage />
-          </Route> */}
+          </Route>
           <Route>
             <Grid container>
               <LeftBar />

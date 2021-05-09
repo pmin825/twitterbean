@@ -17,7 +17,7 @@ export default function LogoutPage() {
   }, []);
 
   if (!user) {
-    return <Redirect to="/auth/login" />;
+    return <Redirect to="/auth/" />;
   }
 
   return <div>Logging out...</div>;
