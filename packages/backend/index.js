@@ -49,7 +49,8 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 
-const server = app.listen(3000, () => {
+const port = process.env.PORT || 3000
+const server = app.listen(port, () => {
   console.log("Now listening on port:", server.address().port);
 });
 
