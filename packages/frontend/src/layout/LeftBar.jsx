@@ -47,7 +47,7 @@ export default function LeftBar() {
             {state.user ? (
               <NavItem to="/auth/logout">Logout</NavItem>
             ) : (
-              <NavItem to="/auth/">Login</NavItem>
+              <NavItem to="/auth/login">Login</NavItem>
             )}
           </Grid>
         </Grid>

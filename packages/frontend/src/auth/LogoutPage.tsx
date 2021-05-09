@@ -8,6 +8,7 @@ export default function LogoutPage() {
   const { user } = state;
 
   useEffect(() => {
+    debugger;
     logout().then(() =>
       dispatch({
         type: "unsetUser",
@@ -17,7 +18,7 @@ export default function LogoutPage() {
   }, []);
 
   if (!user) {
-    return <Redirect to="/auth/" />;
+    return <Redirect to="/auth/login" />;
   }
 
   return <div>Logging out...</div>;

@@ -1,5 +1,5 @@
 import { FormControl, Grid, Input, Box, Typography } from "@material-ui/core";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { StateContext, ContextType } from "../StateProvider";
 import { login, register } from "./authApi";
 import { Link, Redirect } from "react-router-dom";

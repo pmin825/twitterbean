@@ -9,7 +9,7 @@ import RightBar from "./layout/RightBar";
 import LoginPage from "./auth/LoginPage";
 // import RegisterPage from "./auth/RegisterPage";
 import LogoutPage from "./auth/LogoutPage";
-// import FeedPage from "./feed/FeedPage";
+import FeedPage from "./feed/FeedPage";
 import NotFoundPage from "./layout/NotFoundPage";
 import StateProvider, { StateContext } from "./StateProvider";
 import { checkSession } from "./auth/authApi";
@@ -24,7 +24,7 @@ export default function App() {
       </AppBar>
       <Router>
         <Switch>
-          <Route path="/auth/">
+          <Route path="/auth/login">
             <LoginPage />
           </Route>
           <Route path="/auth/register">
@@ -36,7 +36,7 @@ export default function App() {
               <MainBar>
                 <Switch>
                   <Route path="/" exact>
-                    {/* <FeedPage /> */}
+                    <FeedPage />
                   </Route>
                   <Route path="/auth/logout">
                     <LogoutPage />
