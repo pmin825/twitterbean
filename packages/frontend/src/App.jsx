@@ -5,9 +5,7 @@ import { AppBar, Grid, Typography } from "@material-ui/core";
 import MainBar from "./layout/MainBar";
 import LeftBar from "./layout/LeftBar";
 import RightBar from "./layout/RightBar";
-
 import LoginPage from "./auth/LoginPage";
-// import RegisterPage from "./auth/RegisterPage";
 import LogoutPage from "./auth/LogoutPage";
 import FeedPage from "./feed/FeedPage";
 import NotFoundPage from "./layout/NotFoundPage";
