@@ -1,19 +1,23 @@
 import { FormControl, Grid, Input, Box, Typography } from "@material-ui/core";
 import React, { useContext, useState } from "react";
 import { StateContext, ContextType } from "../StateProvider";
-import { login } from "./authApi";
+import { login, register } from "./authApi";
 import { Link, Redirect } from "react-router-dom";
 
 export default function LoginPage() {
   const [handle, setHandle] = useState("");
   const [password, setPassword] = useState("");
+  const [formType, setFormType] = useState<string>("login");
   const { state, dispatch } = useContext<ContextType>(StateContext);
 
   async function handleSubmit(evt: any) {
     evt.preventDefault();
 
     try {
-      const user = await login(handle, password);
+      const user =
+        formType === "login"
+          ? await login(handle, password)
+          : await register(handle, password);
       dispatch({
         type: "setUser",
         payload: user,
@@ -26,6 +30,12 @@ export default function LoginPage() {
 
   if (state.user) {
     return <Redirect to="/" />;
+  }
+
+  function changeForm(e: any) {
+    e.preventDefault();
+    const currentForm = formType === "login" ? "register" : "login";
+    setFormType(currentForm);
   }
 
   return (
@@ -65,11 +75,33 @@ export default function LoginPage() {
                   onChange={(evt) => setPassword(evt.target.value)}
                 />
               </FormControl>
-              <FormControl fullWidth>
-                <Input type="submit" value="Login"></Input>
-              </FormControl>
+
+              {formType === "login" ? (
+                <FormControl fullWidth>
+                  <Input type="submit" value="Login"></Input>
+                </FormControl>
+              ) : (
+                <FormControl fullWidth>
+                  <Input type="submit" value="Register"></Input>
+                </FormControl>
+              )}
             </form>
-            Don't have an account? <Link to="/auth/register">Sign Up</Link>.
+
+            {formType === "login" ? (
+              <>
+                <p>Don't have an account?</p>{" "}
+                <Link to="/auth/register" onClick={(e) => changeForm(e)}>
+                  Sign up
+                </Link>
+              </>
+            ) : (
+              <>
+                <p>Already have an account?</p>{" "}
+                <Link to="/auth/login" onClick={(e) => changeForm(e)}>
+                  Log in
+                </Link>
+              </>
+            )}
           </Grid>
         </Grid>
       </Grid>

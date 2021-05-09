@@ -7,7 +7,7 @@ import LeftBar from "./layout/LeftBar";
 import RightBar from "./layout/RightBar";
 
 import LoginPage from "./auth/LoginPage";
-import RegisterPage from "./auth/RegisterPage";
+// import RegisterPage from "./auth/RegisterPage";
 import LogoutPage from "./auth/LogoutPage";
 // import FeedPage from "./feed/FeedPage";
 import NotFoundPage from "./layout/NotFoundPage";
@@ -24,12 +24,12 @@ export default function App() {
       </AppBar>
       <Router>
         <Switch>
-          <Route path="/auth/login">
+          <Route path="/auth">
             <LoginPage />
           </Route>
-          <Route path="/auth/register">
-            <RegisterPage />
-          </Route>
+          {/* <Route path="/auth/register">
+            <LoginPage />
+          </Route> */}
           <Route>
             <Grid container>
               <LeftBar />
