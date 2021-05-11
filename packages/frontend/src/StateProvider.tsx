@@ -11,10 +11,8 @@ const initialState: State = {
 function reducer(state: State, action: Action): State {
   switch (action.type) {
     case "setUser":
-      debugger
       return { ...state, user: action.payload };
     case "unsetUser":
-      debugger
       return { ...state, user: null };
   }
 }
@@ -44,7 +42,7 @@ export default function StateProvider(props: any) {
     });
   }, []);
 
-  console.log("STATE", state);
+  // console.log("STATE", state);
 
   return (
     <StateContext.Provider value={{ state, dispatch }}>

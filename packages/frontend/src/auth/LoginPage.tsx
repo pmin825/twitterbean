@@ -3,11 +3,14 @@ import React, { useContext, useState } from "react";
 import { StateContext, ContextType } from "../StateProvider";
 import { login, register } from "./authApi";
 import { Link, Redirect } from "react-router-dom";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
 
 export default function LoginPage() {
   const [handle, setHandle] = useState("");
   const [password, setPassword] = useState("");
   const [formType, setFormType] = useState<string>("login");
+  const [open, setOpen] = useState<boolean>(false);
   const { state, dispatch } = useContext<ContextType>(StateContext);
 
   async function handleSubmit(evt: any) {
@@ -24,7 +27,7 @@ export default function LoginPage() {
       });
     } catch (e) {
       console.log(e);
-      alert("Failed to login.");
+      setOpen(true);
     }
   }
 
@@ -105,6 +108,9 @@ export default function LoginPage() {
           </Grid>
         </Grid>
       </Grid>
+      <Snackbar open={open} autoHideDuration={3000} message="Login Failed...">
+        <Alert severity="error">Incorrect handle/password...</Alert>
+      </Snackbar>
     </Grid>
   );
 }

@@ -10,17 +10,32 @@ import LogoutPage from "./auth/LogoutPage";
 import FeedPage from "./feed/FeedPage";
 import NotFoundPage from "./layout/NotFoundPage";
 import StateProvider, { StateContext } from "./StateProvider";
+import PersonIcon from "@material-ui/icons/Person";
 import { checkSession } from "./auth/authApi";
 
 export default function App() {
   return (
     <StateProvider>
-      <AppBar position="static" style={{ marginBottom: 24 }}>
-        <Typography variant="h6" style={{ padding: 12 }}>
-          Twitterbean
-        </Typography>
-      </AppBar>
       <Router>
+        <AppBar
+          position="static"
+          style={{
+            marginBottom: 24,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingRight: 12,
+            cursor: "pointer",
+          }}
+        >
+          <Link to="/">
+            <Typography variant="h6" style={{ padding: 12 }}>
+              Twitterbean!!
+            </Typography>
+          </Link>
+          <PersonIcon></PersonIcon>
+        </AppBar>
         <Switch>
           <Route path="/auth/login">
             <LoginPage />
